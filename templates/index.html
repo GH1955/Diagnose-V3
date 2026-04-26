@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steuer-Assistenz Österreich</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="shell">
+    <aside class="sidebar card">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 18h14"/>
+            <path d="M7 18V8.5c0-.7.39-1.35 1.01-1.67L12 5l3.99 1.83c.62.32 1.01.97 1.01 1.67V18"/>
+            <path d="M10 10.5h4"/>
+            <path d="M10 13.5h4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="eyebrow">Flask · Groq · Railway</div>
+          <h1>Steuer-Assistenz Österreich</h1>
+        </div>
+      </div>
+
+      <p class="intro">Eine eigene Chat-Oberfläche für Fragen zu Steuern in Österreich — ohne Spaces-UI, mit ruhiger Optik und direkter Frage-Antwort-Ansicht.</p>
+
+      <div class="panel">
+        <h2>Beispielfragen</h2>
+        <div class="examples">
+          <button class="example-btn" data-question="Welche Werbungskosten können Arbeitnehmer in Österreich typischerweise absetzen?">Werbungskosten</button>
+          <button class="example-btn" data-question="Wie funktioniert die Kleinunternehmerregelung in Österreich?">Kleinunternehmer</button>
+          <button class="example-btn" data-question="Was ist bei Einkünften aus Vermietung in Österreich steuerlich wichtig?">Vermietung</button>
+        </div>
+      </div>
+
+      <div class="panel small-panel">
+        <strong>Hinweis</strong>
+        <p>Die Antworten sind eine allgemeine Orientierung und ersetzen keine individuelle Steuerberatung.</p>
+      </div>
+    </aside>
+
+    <main class="chat card" id="main">
+      <header class="chat-header">
+        <div>
+          <div class="chat-title">Fragen eingeben</div>
+          <div class="chat-subtitle">Antworten erscheinen direkt in dieser Oberfläche.</div>
+        </div>
+      </header>
+
+      <section class="messages" id="messages" aria-live="polite">
+        <article class="message assistant">
+          <div class="message-role">Assistenz</div>
+          <div class="message-body">Willkommen. Stelle eine Frage zu Steuern in Österreich, und ich antworte hier direkt in dieser Oberfläche.</div>
+        </article>
+      </section>
+
+      <form id="chatForm" class="composer">
+        <label for="question" class="sr-only">Frage</label>
+        <textarea id="question" name="question" placeholder="Zum Beispiel: Muss ich eine Arbeitnehmerveranlagung in Österreich machen?"></textarea>
+        <div class="composer-actions">
+          <div class="status" id="status">Bereit</div>
+          <button type="submit" id="sendBtn">Frage senden</button>
+        </div>
+      </form>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
